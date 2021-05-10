@@ -7,6 +7,8 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"io"
 	"log"
 	"net"
@@ -15,10 +17,23 @@ import (
 
 //!+
 func main() {
-	conn, err := net.Dial("tcp", "localhost:8000")
+
+	if len(os.Args) != 5 {
+		fmt.Println("Expected:")
+		fmt.Println("./client -user <user> -server <address:port>")
+	}
+
+	user := flag.String("user", "user1", "username")
+	server := flag.String("server", "localhost:8000", "address:port")
+	flag.Parse()
+
+	conn, err := net.Dial("tcp", *server)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	conn.Write([]byte(*user))
+
 	done := make(chan struct{})
 	go func() {
 		io.Copy(os.Stdout, conn) // NOTE: ignoring errors
