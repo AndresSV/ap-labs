@@ -27,6 +27,9 @@ Technical Requirements
 – Go installed
 – Terminal where we can run emojis and emoticons.
 
+#Video Reference
+
+– [VIDEO](https://www.youtube.com/watch?v=JtJ8OUsdSBM&ab_channel=OscarRivers)
 
 ## Usage 
 
@@ -51,7 +54,7 @@ The development of this project was as simple as making the core components as s
 
 ### Code Functionality
 
-![TASK FLOW](pacman.png)
+![TASK FLOW](taskFlow.png)
 
 Structs:
 sprite: For coordinates information
